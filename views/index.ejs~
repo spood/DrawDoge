@@ -1,0 +1,16 @@
+
+<% var title = 'Home' %>
+<% include head %>
+
+<h1>Home</h1>
+
+
+
+
+
+<% if (alert ) { %>
+<div class="alert alert-success alert-dismissable" style="margin-left:20px; width:400px"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><%- alert %></div>
+<% } %>
+
+
+<% include foot %>
