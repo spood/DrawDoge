@@ -189,6 +189,6 @@ app.post('/createAccount', function(req, res){
 });
 
 if (!module.parent) {
-  app.listen(5000);
+  app.listen(process.env.PORT || 5000);
   console.log('Express started on port 5000');
 }
