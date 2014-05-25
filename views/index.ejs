@@ -1,16 +1,82 @@
 
-<% var title = 'Home' %>
+<% var title = 'Draw Doge' %>
 <% include head %>
 
-<h1>Home</h1>
+<% if ( loggedIn ) { %> 
+<div class="alert alert-info">Deposit Dogecoins to this address to add them to your account <strong><%= dogeaddress %></strong></div>
+<% } %>
 
-
-
-
+<h1>Draw Doge</h1>
+<h2>Use Dogecoins to draw with fellow shibes</h2>
 
 <% if (alert ) { %>
   <div class="alert alert-success alert-dismissable" style="margin-left:20px; width:400px"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><%- alert %></div>
 <% } %>
 
+<% if (!loggedIn ) { %>
+  <div class="alert alert-warning alert-dismissable" style="margin-left:20px; width:800px"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>You must be logged in to draw. Create an account to get a Dogecoin address you can deposit to!</div>
+<% } %>
 
+<a href="#" id="popNotice"  class="btn btn-primary" style="visibility: hidden"
+   data-content="Deposit more Dogecoins to the address above to draw more!"
+   data-original-title="Not enough Dogecoins!">Uh-oh not enough Dogecoins!
+</a>
+
+<div id="board" style="width: 1660px; height: 768px; position: relative;">
+  <canvas id="playerCanvas" width="1660px" height="768px" style="position: absolute;z-index: 2;"></canvas>
+  <canvas id="serverCanvas" width="1660px" height="768px" style="position: absolute;z-index: 0;border: 3px dotted  #000;">
+          Sorry, your browser doesn't support canvas technology. Please enable Javascript and use a browser that supports HTML5.
+  </canvas>
+  <canvas id="drawCanvas" width="1660px" height="768px" style="position: absolute;z-index: 1;border: 3px dotted  #000;">
+  </canvas>
+</div><!-- END board -->
+
+<div style="margin:20px">
+  <table>
+    <tr>
+      <td>
+      <div id="colorpickerHolder">
+      </div>
+      </td>
+      <td>
+      <div style="margin:20px">
+        <form>
+                <label>Tiny Doge (1)</label>            
+                <input type="radio" name="radioSizeDoges" value="1" id="radioStroke1" style="float:right" />
+                <br>
+                <label>Small Doge (2)</label>            
+                <input type="radio" name="radioSizeDoges" value="2" id="radioStroke2" style="float:right" />
+                <br>
+                <label>Average Doge (5)</label>            
+                <input type="radio" name="radioSizeDoges" value="5" id="radioStroke5" style="float:right" checked />
+                <br>
+                <label>Large Doge (8)</label>            
+                <input type="radio" name="radioSizeDoges" value="8" id="radioStroke8" style="float:right" />
+                <br>
+                <label>Fat Doge (12)</label>            
+                <input type="radio" name="radioSizeDoges" value="12" id="radioStroke12" style="float:right" />
+                <br>
+                <label>Obese Doge (15)</label>            
+                <input type="radio" name="radioSizeDoges" value="15" id="radioStroke15" style="float:right" />
+        </form>
+      </div>
+      </td>
+      <td>
+        Free Test Canvas
+        <br>
+
+        <canvas id="testCanvas" width="128px" height="128px" style="position: relative;z-index: 3; border: 3px dotted  #000;">
+                Sorry, your browser doesn't support canvas technology.
+        </canvas>
+
+        <br>
+        <div id="costLabel">                               </div>
+      </td>
+      <td>
+        <label>Show doges?</label>            
+        <input type="checkbox" id="showShibes" style="margin-left:10px;float:right" checked />
+      </td>
+    </tr>
+  </table>
+</div>
 <% include foot %>
