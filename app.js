@@ -17,7 +17,7 @@ app.use(express.static(__dirname + '/public'));
 // middleware
 
 app.use(express.bodyParser());
-app.use(express.cookieParser('shhhh, very secret'));
+app.use(express.cookieParser('such secret very sneak much security'));
 app.use(express.session());
 
 // Session-persisted message middleware
@@ -80,9 +80,6 @@ function createAccount(username, pass1, pass2, email, fn) {
     });
   }
 }
-
-createAccount('root', 'root', 'root',"wd@gmail.com", function(err){});
-createAccount('tj', 'foobar', 'foobar',"wasd@gmail.com", function(err){});
 
 
 // Authenticate using our plain-object database of doom!
