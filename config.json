@@ -1,0 +1,4 @@
+{
+  "dogecoind" : "/home/dogecoin/bin/dogecoind",
+  "mongo" : "/home/spood/Downloads/mongodb-linux-x86_64-2.4.8/bin"
+}
